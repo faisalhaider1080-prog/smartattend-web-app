@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block content %}<h2>Dashboard</h2><div class="row g-3 my-2">
+{% for label,value in [('Students',students),('Semesters',semesters),('Today records',today_records),('Present today',present)] %}<div class="col-md-3"><div class="card metric p-3"><div class="text-muted">{{ label }}</div><h2>{{ value }}</h2></div></div>{% endfor %}</div>
+<div class="card p-3 mt-3"><h5>Recent attendance</h5><table class="table"><tr><th>Date</th><th>Student</th><th>Subject</th><th>Status</th></tr>{% for r in recent %}<tr><td>{{ r.class_date }}</td><td>{{ r.enrollment.student.full_name }}</td><td>{{ r.enrollment.subject.name }}</td><td>{{ r.status }}</td></tr>{% else %}<tr><td colspan="4">No attendance records yet.</td></tr>{% endfor %}</table></div>{% endblock %}
